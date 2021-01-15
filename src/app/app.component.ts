@@ -7,18 +7,13 @@ import {IPlayer} from './interface/IPlayer';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'spel-web';
-  constructor(
-    private restService: RestService) { }
 
-  ngOnInit(): void{
-    const player: IPlayer = {
-      name: 'daniel'
-    };
-     this.restService.createGame(player).subscribe((resp: any) => {
-       console.log(resp);
-    });
+  constructor() {
+  }
+
+  ngOnInit(): void {
 
   }
 }
