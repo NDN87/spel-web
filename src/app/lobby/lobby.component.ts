@@ -3,6 +3,7 @@ import {FormBuilder} from '@angular/forms';
 import {Router} from '@angular/router';
 import {IPlayer} from '../interface/IPlayer';
 import {RestService} from '../rest/rest.service';
+import {IGameId} from '../interface/IGameId';
 
 @Component({
   selector: 'app-lobby',
@@ -22,16 +23,15 @@ export class LobbyComponent implements OnInit {
   }
 
   join(): void {
-    this.router.navigateByUrl(`join/${this.lobbyForm.get('id').value}`);
+    this.router.navigateByUrl(`game/${this.lobbyForm.get('id').value}`);
   }
 
   create(): void{
     const player: IPlayer = {
       name: this.lobbyForm.get('name').value
     };
-    this.restService.createGame(player).subscribe((resp: any) => {
-      console.log(resp);
+    this.restService.createGame(player).subscribe((resp: IGameId) => {
+      this.router.navigateByUrl(`game/${resp.id}`);
     });
-    //this.router.navigateByUrl('create');
   }
 }
