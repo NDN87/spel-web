@@ -19,11 +19,21 @@ export class LobbyComponent implements OnInit {
     id: '',
     name: ''
   });
+  invalidGameId = undefined;
   ngOnInit(): void {
   }
 
   join(): void {
     this.router.navigateByUrl(`game/${this.lobbyForm.get('id').value}`);
+  }
+
+  checkGameId(): void{
+    if (this.lobbyForm.get('id').value === ''){
+      this.invalidGameId = undefined;
+      return;
+    }
+    const regexForUUID = new RegExp('\\b[0-9a-f]{8}\\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\\b[0-9a-f]{12}\\b');
+    this.invalidGameId = !regexForUUID.test(this.lobbyForm.get('id').value);
   }
 
   create(): void{

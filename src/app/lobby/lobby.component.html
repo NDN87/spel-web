@@ -4,15 +4,21 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">Name</span>
       </div>
-      <input type="text" class="form-control" placeholder="Your player name"  formControlName="name">
+      <input type="text" class="form-control" placeholder="Your player name" formControlName="name">
     </div>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon2 ">Game ID</span>
+    <div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon2 ">Game ID</span>
+        </div>
+        <input type="text" class="form-control" placeholder="Required if joining" formControlName="id"
+               (blur)="checkGameId()">
+        <sup><span class="badge badge-danger" *ngIf="invalidGameId">Invalid</span></sup>
       </div>
-      <input type="text" class="form-control" placeholder="Required if joining" formControlName="id">
     </div>
-    <button type="button" class="btn btn-primary" (click)="join()">Join game</button>
-    <button type="button" class="btn btn-secondary" (click)="create()">Create game</button>
+    <button type="button" class="btn btn-primary" (click)="create()">Create game</button>
+    <button type="button" class="btn btn-secondary" (click)="join()" style="margin:5px;" [disabled]="invalidGameId">Join
+      game
+    </button>
   </form>
 </div>

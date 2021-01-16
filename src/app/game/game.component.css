@@ -1,0 +1,11 @@
+.center {
+  display: flex;
+  margin-top: 200px;
+  justify-content: center;
+  align-items: center;
+}
+.center-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

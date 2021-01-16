@@ -1,1 +1,20 @@
-<p>game works!</p>
+<h1>Playing against...</h1>
+<div>
+  <div class="center">
+<span (click)="select('SCISSORS')">
+  <i *ngIf="choice==='SCISSORS'" class="fa fa-hand-scissors-o fa-5x"></i>
+  <i *ngIf="choice!=='SCISSORS'" class="fa fa-hand-scissors-o fa-3x"></i>
+</span>
+    <span (click)="select('ROCK')">
+  <i *ngIf="choice==='ROCK'" class="fa fa-hand-rock-o fa-5x"></i>
+  <i *ngIf="choice!=='ROCK'" class="fa fa-hand-rock-o fa-3x"></i>
+</span>
+    <span (click)="select('PAPER')">
+  <i *ngIf="choice==='PAPER'" class="fa fa-hand-paper-o fa-5x"></i>
+  <i *ngIf="choice!=='PAPER'" class="fa fa-hand-paper-o fa-3x"></i>
+</span>
+  </div>
+  <div class="center" *ngIf="choice!==''">
+    <button type="button" class="btn btn-success">Confirm</button>
+  </div>
+</div>
