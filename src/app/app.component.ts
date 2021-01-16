@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {RestService} from './rest/rest.service';
-import {IPlayer} from './interface/IPlayer';
 
 @Component({
   selector: 'app-root',
