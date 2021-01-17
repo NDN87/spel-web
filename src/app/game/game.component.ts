@@ -17,7 +17,7 @@ export class GameComponent implements OnInit {
     private route: ActivatedRoute) {
   }
 
-  message = 'Waiting for opponent to join...';
+  message: string;
   state: IPlayer[];
   gameId: string;
   choiseConfirmed = false;
@@ -28,6 +28,7 @@ export class GameComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.gameId = params.id;
     });
+    this.showWaiting();
     this.refresh();
   }
 
@@ -39,7 +40,10 @@ export class GameComponent implements OnInit {
       if (this.state[0].playerStatus === 'READY' && this.state[1].playerStatus === 'READY'){
         this.showResult();
       }
-      else if (this.state[0].name !== null && this.state[1]?.name) {
+      if (this.choiseConfirmed) {
+        this.showWaiting();
+      }
+      else if (this.state[0].name !== null && this.state[1]?.name !== undefined) {
         this.message = this.state[0].name + ' vs ' + this.state[1].name;
         this.showComponent = 'MOVE_SELECT';
       }
@@ -53,10 +57,15 @@ export class GameComponent implements OnInit {
       this.result = response;
     });
   }
+  showWaiting(): void{
+    this.showComponent = 'WAITING_FOR_PLAYER';
+    this.message = 'Waiting for opponent...';
+  }
 
   confirm(choice: string): void {
     this.gameService.makeMove(this.gameId, choice);
     this.choiseConfirmed = true;
+    this.showComponent = 'WAITING_FOR_PLAYER';
     this.refresh();
   }
 }

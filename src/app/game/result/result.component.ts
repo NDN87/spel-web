@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IPlayer} from '../../interface/IPlayer';
 import {IResult} from '../../interface/IResult';
+import {GameService} from '../../services/session/game.service';
 
 @Component({
   selector: 'app-result',
@@ -12,7 +13,7 @@ export class ResultComponent implements OnInit {
   players: IPlayer[];
   @Input()
   result: IResult;
-  constructor() { }
+  constructor(private gameService: GameService) { }
 
   ngOnInit(): void {
   }
@@ -26,5 +27,9 @@ export class ResultComponent implements OnInit {
       case 'SCISSORS':
         return 'fa fa-hand-scissors-o fa-3x';
     }
+  }
+
+  return(): void{
+    this.gameService.return();
   }
 }

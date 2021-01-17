@@ -50,4 +50,8 @@ export class GameService {
   getWinner(gameId: string): Observable<IResult> {
     return this.restService.getResult(gameId);
   }
+
+  return(): void {
+    this.router.navigate(['/']);
+  }
 }
