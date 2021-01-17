@@ -19,7 +19,7 @@ export class RestService {
   }
 
   joinGame(id: string, player: IPlayer): Observable<any> {
-    return this.http.post<void>(endpoint + 'games', player).pipe(
+    return this.http.post<void>(endpoint + `games/${id}/join`, player).pipe(
       catchError(this.handleError)
     );
   }

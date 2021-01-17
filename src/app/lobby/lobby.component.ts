@@ -20,7 +20,7 @@ export class LobbyComponent implements OnInit {
   }
 
   join(): void {
-    this.gameService.join(this.lobbyForm.get('name').value, this.lobbyForm.get('id').value);
+    this.gameService.join(this.lobbyForm.get('id').value, this.lobbyForm.get('name').value);
   }
 
   create(): void{
