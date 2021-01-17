@@ -12,28 +12,24 @@ import {IResult} from '../../interface/IResult';
 export class GameService {
 
   constructor(
-    private router: Router,
-    private restService: RestService) {
+    private restService: RestService,
+    ) {
   }
 
   player: IPlayer;
 
-  join(gameId: string, n: string): void {
+  join(gameId: string, n: string): Observable<any> {
     this.player = {
       name: n
     };
-    this.restService.joinGame(gameId, this.player).subscribe(() => {
-      this.router.navigate(['game/', gameId]);
-    });
+    return this.restService.joinGame(gameId, this.player);
   }
 
-  create(n: string): void {
+  create(n: string): Observable<any> {
     this.player = {
       name: n
     };
-    this.restService.createGame(this.player).subscribe((resp: IGameId) => {
-      this.router.navigate(['game', resp.id]);
-    });
+    return this.restService.createGame(this.player);
   }
 
   makeMove(gameId: string, choice: string): void {
@@ -49,9 +45,5 @@ export class GameService {
 
   getWinner(gameId: string): Observable<IResult> {
     return this.restService.getResult(gameId);
-  }
-
-  return(): void {
-    this.router.navigate(['/']);
   }
 }

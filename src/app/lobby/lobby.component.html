@@ -17,8 +17,11 @@
       </div>
     </div>
     <button type="button" class="btn btn-primary" (click)="create()">Create game</button>
-    <button type="button" class="btn btn-secondary" (click)="join()" style="margin:5px;" [disabled]="invalidGameId">Join
+    <button *ngIf="invalidGameId === false" type="button" class="btn btn-secondary" (click)="join()" style="margin:5px;">Join
       game
     </button>
+    <div *ngIf="error !== ''" class="alert alert-danger" role="alert">
+      {{error}}
+    </div>
   </form>
 </div>

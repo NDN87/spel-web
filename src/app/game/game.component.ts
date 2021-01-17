@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {RestService} from '../services/rest/rest.service';
 import {GameService} from '../services/session/game.service';
 import {IPlayer} from '../interface/IPlayer';
 import {ActivatedRoute} from '@angular/router';

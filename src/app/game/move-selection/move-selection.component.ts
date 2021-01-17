@@ -1,5 +1,4 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
-import {GameService} from '../../services/session/game.service';
 
 @Component({
   selector: 'app-move-selection',
@@ -10,7 +9,7 @@ export class MoveSelectionComponent implements OnInit {
   @Output()
   confirmedChoice =  new EventEmitter<string>();
   selectedChoice: string;
-  constructor(private gameService: GameService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

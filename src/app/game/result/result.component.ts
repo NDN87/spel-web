@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {IPlayer} from '../../interface/IPlayer';
 import {IResult} from '../../interface/IResult';
 import {GameService} from '../../services/session/game.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-result',
@@ -13,7 +14,8 @@ export class ResultComponent implements OnInit {
   players: IPlayer[];
   @Input()
   result: IResult;
-  constructor(private gameService: GameService) { }
+  constructor(private gameService: GameService,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -30,6 +32,6 @@ export class ResultComponent implements OnInit {
   }
 
   return(): void{
-    this.gameService.return();
+    this.router.navigateByUrl('/');
   }
 }
