@@ -1,0 +1,13 @@
+<div class="center">
+  <div class="name">{{players[0].name}}</div>
+  <div>
+  <i class="{{moveToIcon(players[0].move)}}"></i> vs <i class="{{moveToIcon(players[1].move)}}"></i>
+  </div>
+  <div class="name">{{players[1].name}}</div>
+</div>
+<div *ngIf="result.winner" class="center">
+  <p> Winner: {{result.winner}}</p>
+</div>
+<div *ngIf="result.draw" class="center">
+  <p> Game was a draw.</p>
+</div>

@@ -1,20 +1,16 @@
 <h1>{{message}}</h1>
 <div>
-  <div class="center">
-<span (click)="select('SCISSORS')">
-  <i *ngIf="choice==='SCISSORS'" class="fa fa-hand-scissors-o fa-5x"></i>
-  <i *ngIf="choice!=='SCISSORS'" class="fa fa-hand-scissors-o fa-3x"></i>
-</span>
-    <span (click)="select('ROCK')">
-  <i *ngIf="choice==='ROCK'" class="fa fa-hand-rock-o fa-5x"></i>
-  <i *ngIf="choice!=='ROCK'" class="fa fa-hand-rock-o fa-3x"></i>
-</span>
-    <span (click)="select('PAPER')">
-  <i *ngIf="choice==='PAPER'" class="fa fa-hand-paper-o fa-5x"></i>
-  <i *ngIf="choice!=='PAPER'" class="fa fa-hand-paper-o fa-3x"></i>
-</span>
-  </div>
-  <div class="center" *ngIf="choice!==''">
-    <button type="button" class="btn btn-success" (click)="confirm()">Confirm</button>
-  </div>
+  <app-move-selection
+    *ngIf="showComponent == 'MOVE_SELECT'"
+    (confirmedChoice)="confirm($event)"
+  ></app-move-selection>
+  <app-refresh
+    *ngIf="showComponent == 'WAITING_FOR_PLAYER'"
+    (refresh)="refresh()">
+  </app-refresh>
+  <app-result
+    *ngIf="showComponent == 'RESULT'"
+    [players]="state"
+    [result]="result"
+  ></app-result>
 </div>

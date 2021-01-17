@@ -4,6 +4,7 @@ import {Observable, throwError} from 'rxjs';
 import {IGameId} from '../../interface/IGameId';
 import {catchError} from 'rxjs/operators';
 import {IPlayer} from '../../interface/IPlayer';
+import {IResult} from '../../interface/IResult';
 const endpoint = 'http://localhost:8080/api/v1/';
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,12 @@ export class RestService {
 
   getGameStatus(id: string): Observable<any> {
     return this.http.get<void>(endpoint + `games/${id}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getResult(id: string): Observable<any> {
+    return this.http.get<IResult>(endpoint + `games/${id}/result`).pipe(
       catchError(this.handleError)
     );
   }

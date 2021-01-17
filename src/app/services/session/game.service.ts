@@ -4,6 +4,7 @@ import {IPlayer} from '../../interface/IPlayer';
 import {IGameId} from '../../interface/IGameId';
 import {RestService} from '../rest/rest.service';
 import {Observable} from 'rxjs';
+import {IResult} from '../../interface/IResult';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,6 @@ export class GameService {
     this.player = {
       name: n
     };
-    this.router.navigateByUrl(`game/${gameId}`);
     this.restService.joinGame(gameId, this.player).subscribe(() => {
       this.router.navigate(['game/', gameId]);
     });
@@ -45,5 +45,9 @@ export class GameService {
 
   refresh(gameId: string): Observable<IPlayer[]> {
     return this.restService.getGameStatus(gameId);
+  }
+
+  getWinner(gameId: string): Observable<IResult> {
+    return this.restService.getResult(gameId);
   }
 }

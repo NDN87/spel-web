@@ -1,0 +1,10 @@
+.center {
+  display: flex;
+  margin-top: 200px;
+  justify-content: center;
+  align-items: center;
+}
+
+.name {
+  margin: 10px;
+}

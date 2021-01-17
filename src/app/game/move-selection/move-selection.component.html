@@ -1,0 +1,18 @@
+
+<div class="center">
+<span (click)="select('SCISSORS')">
+  <i *ngIf="selectedChoice==='SCISSORS'" class="fa fa-hand-scissors-o fa-5x"></i>
+  <i *ngIf="selectedChoice!=='SCISSORS'" class="fa fa-hand-scissors-o fa-3x"></i>
+</span>
+  <span (click)="select('ROCK')">
+  <i *ngIf="selectedChoice==='ROCK'" class="fa fa-hand-rock-o fa-5x"></i>
+  <i *ngIf="selectedChoice!=='ROCK'" class="fa fa-hand-rock-o fa-3x"></i>
+</span>
+  <span (click)="select('PAPER')">
+  <i *ngIf="selectedChoice==='PAPER'" class="fa fa-hand-paper-o fa-5x"></i>
+  <i *ngIf="selectedChoice!=='PAPER'" class="fa fa-hand-paper-o fa-3x"></i>
+</span>
+</div>
+<div class="center" *ngIf="selectedChoice!==''">
+  <button type="button" class="btn btn-success" (click)="confirm()">Confirm</button>
+</div>
